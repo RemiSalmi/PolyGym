@@ -16,7 +16,7 @@ app.use('/exercices', exercicesRoute);
 app.use('/programmes', programmesRoute);
 
 //Port to use
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
