@@ -3,7 +3,7 @@ const router = express.Router();
 
 //Consulter la liste des exercices
 router.get ('/', (req, res) => {
-    res.render('index');
+    res.render('listeExercices');
 });
 
 //Consulter le detail un exercice 
