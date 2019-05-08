@@ -1,0 +1,20 @@
+.mr-right{
+    margin-right: 10px;
+}
+
+.mr-auto{
+    margin:auto;
+}
+
+.mr-top{
+    margin-top: 2%;
+}
+
+.page-item.active .page-link {
+
+    z-index: 1;
+    color: #fff;
+    background-color: #ff9b00;
+    border-color: #ff9b00;
+
+}
