@@ -1,0 +1,36 @@
+<%- include('header'); %>
+
+
+
+<div class="container loginBox mr-auto mr-bot mr-top-40 w-80">
+
+    <form action="" method="post">
+        <div class="jumbotron ">
+            <h1 class="mr-auto">Inscription</h1>
+        </div>
+
+        <label class="mr-top" for="exampleInputEmail1">Adresse email</label>
+        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Entrez votre email">
+
+        <label class="mr-top" for="exampleInputEmail1">Nom</label>
+        <input type="text" class="form-control" id="inputNom" name="inputNom" placeholder="Entez votre nom">
+
+        <label class="mr-top" for="exampleInputEmail1">Prénom</label>
+        <input type="text" class="form-control" id="inputPrenom" name="inputPrenom" placeholder="Entrez votre prénom">
+
+        <label class="mr-top" for="exampleInputEmail1">Mot de passe</label>
+        <input type="password" class="form-control" id="inputMdp" name="inputMdp"
+            placeholder="Entrez votre mot de passe">
+
+        <label class="mr-top" for="exampleInputEmail1">Retapez votre mot de passe</label>
+        <input type="password" class="form-control" id="inputMdp2" name="inputMdp2"
+            placeholder="Retapez votre mot de passe">
+
+        <div class="dsp-flex">
+            <button type="submit" class="btn btn-success mr-auto mr-top-40">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+<%- include('footer'); %>
