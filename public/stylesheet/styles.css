@@ -10,6 +10,14 @@
     margin-top: 2%;
 }
 
+.mr-bot{
+    margin-bottom: 2%;
+}
+
+.mr-top-40{
+    margin-top: 40px;
+}
+
 .page-item.active .page-link {
 
     z-index: 1;
@@ -17,4 +25,23 @@
     background-color: #ff9b00;
     border-color: #ff9b00;
 
+}
+
+.sizefix{
+    width: 60%;
+    height: 60%;
+}
+
+.bold{
+    font-weight: bold;
+    color: black;
+}
+
+.loginBox{
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 15px;
+}
+
+.dsp-flex{
+    display: flex;
 }
