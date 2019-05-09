@@ -3,7 +3,7 @@ const router = express.Router();
 
 //Afficher la liste de mes programmes
 router.get('/mesProgrammes', (req, res) => {
-    res.render('index');
+    res.render('mesProgrammes');
 });
 
 //Afficher le détail d'un programme

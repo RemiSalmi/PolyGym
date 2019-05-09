@@ -4,12 +4,12 @@ const router = express.Router();
 
 //Accéder à la page de Connexion
 router.get('/login', (req, res) => {
-    res.render('index');
+    res.render('connexion');
 });
 
 //Accéder à la page d'inscription
 router.get('/inscription', (req, res) => {
-    res.render('index');
+    res.render('inscription');
 });
 
 //Créer un utilisateur
@@ -24,7 +24,7 @@ router.put('/:id', (req, res) => {
 
 //Accéder à ma page de profil
 router.get('/monCompte', (req, res) => {
-    res.render('index');
+    res.render('profile');
 });
 
 //Supprimer un utilisateur
