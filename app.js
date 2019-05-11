@@ -15,6 +15,12 @@ app.use('/utilisateurs', utilisateursRoute);
 app.use('/exercices', exercicesRoute);
 app.use('/programmes', programmesRoute);
 
+//Controllers imports
+const exerciceController = require('./controllers/exerciceController');
+const programmeController = require('./controllers/programmeControllers');
+const utilisateurController = require('./controllers/utilisateurController');
+
+
 //Port to use
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
@@ -32,4 +38,7 @@ app.get('/', (req, res) => {
     res.redirect('/exercices');
 });
 
+//Test route
+app.get('/test/equips', exerciceController.getAllEquipement);
+app.get('/test/muscles/:id', exerciceController.getMuscleById);
 
