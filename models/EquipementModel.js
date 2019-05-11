@@ -1,14 +1,8 @@
-const { Pool } = require('pg')
-const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_DB,
-    password: process.env.DB_PWD,
-    port: process.env.DB_PORT,
-    ssl: true
+const { Client } = require('pg')
+const pool = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
 })
-
-console.log(pool)
 
 
 class Equipement {
