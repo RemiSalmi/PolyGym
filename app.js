@@ -38,6 +38,8 @@ const pool = new Pool({
     ssl: true
 })
 
+console.log(pool)
+
 //Assets's folder
 app.use('/public', express.static('public'));
 
