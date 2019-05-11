@@ -9,7 +9,7 @@ exports.getEquipementById = (req,res) =>{
 }
 
 exports.getAllEquipement = (req,res) =>{
-    Equipement.getAllBis()
+    Equipement.getAll()
     .then((tabEquip) => {
         console.table(tabEquip)
         res.redirect('/')
