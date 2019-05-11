@@ -12,7 +12,7 @@ exports.getAllEquipement = (req,res) =>{
     Equipement.getAll()
     .then((tabEquip) => {
         console.table(tabEquip)
-        res.redirect('/')
+        res.send(JSON.stringify(tabEquip))
     })
     .catch((error) =>{
         console.log(error)
