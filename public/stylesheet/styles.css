@@ -46,3 +46,11 @@
 .dsp-flex{
     display: flex;
 }
+
+a:hover{
+    text-decoration: none
+}
+
+.mr-r-auto{
+    margin-right: auto;
+}
