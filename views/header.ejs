@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../public/stylesheet/bootstrap.css">
   <link rel="stylesheet" href="../public/stylesheet/styles.css">
-  <title>Mon Profile</title>
+  <title><%= title %></title>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -29,22 +29,22 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-r-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Exercices</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/programmes/mesProgrammes">Mes Programmes</a>
+        <li id="mesProgrammesLink" class="nav-item">
+          <a  class="nav-link" href="/programmes/mesProgrammes">Mes Programmes</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/utilisateurs/monCompte">Mon compte</a>
+        <li id="monCompteLink" class="nav-item">
+          <a  class="nav-link" href="/utilisateurs/monCompte">Mon compte</a>
         </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Connexion
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div id="connexionOptions" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/utilisateurs/login">Se connecter</a>
             <a class="dropdown-item" href="/utilisateurs/inscription">S'inscrire</a>
           </div>

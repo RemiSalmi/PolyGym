@@ -1,0 +1,32 @@
+<%- include('header'); %>
+
+<div class=" container jumbotron mr-auto mr-top">
+    <h1 class="mr-auto">Déconnexion</h1>
+</div>
+
+<div class=" container jumbotron mr-top">
+    <div class="row">
+        <span>Voulez-vous vraiment vous déconnecter ?</span>
+    </div>
+    <form action="/utilisateurs/logout" method="POST">
+        <div class="row mr-top-40">
+            <button type="submit" id="deconnexionBtn" class="btn btn-danger">Déconnexion</button>
+        </div>
+    </form>
+    
+
+</div>
+
+
+<script>
+    deconnexionButton = document.getElementById('deconnexionBtn')
+    
+
+    function disconect(event) {
+        localStorage.removeItem('token')
+        window.location.href = '/'
+    }
+
+</script>
+
+<%- include('footer'); %>

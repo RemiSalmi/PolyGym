@@ -2,22 +2,27 @@
 
 
   <div class="container jumbotron mr-auto mr-top">
-    <h2>Nom Exercice</h2>
+    <h2><%= Exercice.lib %></h2>
     <hr>
     
     <table>
       
       <tr>
-        <td class="bold">Muscle:</td>
-        <td>Abdo</td>
+        <td class="bold">Muscle(s):</td>
+        <% tabMuscles.forEach(function(item){ %>
+          <td><%= item.lib %></td>
+        <% }) %>
+        
       </tr>
       <tr>
-        <td  class="bold" style="width:120px">Equipement:</td>
-        <td>Aucun</td>
+        <td  class="bold" style="width:120px">Equipement(s):</td>
+        <% tabEquips.forEach(function(item){ %>
+          <td><%= item.lib %></td>
+        <% }) %>
       </tr>
       <tr>
         <td class="bold">Niveau:</td>
-        <td>Débutant</td>
+        <td><%= Exercice.difficulte %></td>
       </tr>
     </table> 
 
@@ -30,20 +35,16 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
       </ol>
       <div class="carousel-inner ">
         <div class="carousel-item active">
-          <img src="index.png" class="d-block w-100" alt="...">
+          <img src="../public/images/exercices/<%= Exercice.img1 %>" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="index.png" class="d-block w-100" alt="...">
+          <img src="../public/images/exercices/<%= Exercice.img2 %>" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="index.png" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="index.png" class="d-block w-100" alt="...">
+          <img src="../public/images/exercices/<%= Exercice.img3 %>" class="d-block w-100" alt="...">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -55,9 +56,6 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-
-
-
   </div>
 
   <%- include('footer'); %>

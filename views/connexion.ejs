@@ -1,26 +1,33 @@
+<%- include('header'); %>
 
+<div class="container loginBox mr-auto mr-bot mr-top-40 w-80">
 
-    <%- include('header'); %>
+    <form id="connexionForm" action="/utilisateurs/login" method="POST">
+        <div class="jumbotron ">
+            <h1 class="mr-auto">Connexion</h1>
+        </div>
 
-    <div class="container loginBox mr-auto mr-bot mr-top-40 w-80">
+        <% if (locals.error){ %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <% } %>
 
-        <form action="" method="post">
-            <div class="jumbotron ">
-                <h1 class="mr-auto">Connexion</h1>
-            </div>
+        <label class="mr-top" for="InputEmail1">Adresse email</label>
+        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Entrez votre email">
 
-            <label class="mr-top" for="exampleInputEmail1">Adresse email</label>
-            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Entrez votre email">
+        <label class="mr-top" for="inputMdp">Mot de passe</label>
+        <input type="password" class="form-control" id="inputMdp" name="inputMdp"
+            placeholder="Entrez votre mot de passe">
 
-            <label class="mr-top" for="exampleInputEmail1">Mot de passe</label>
-            <input type="password" class="form-control" id="inputMdp" name="inputMdp"
-                placeholder="Entrez votre mot de passe">
+        <div class="dsp-flex"></div>
+        <button type="submit" class="btn btn-success mr-auto mr-top-40">Submit</button>
+</div>
 
-            <div class="dsp-flex">
-                <button type="submit" class="btn btn-success mr-auto mr-top-40">Submit</button>
-            </div>
+</form>
+</div>
 
-        </form>
-    </div>
-
-    <%- include('footer'); %>
+<%- include('footer'); %>
