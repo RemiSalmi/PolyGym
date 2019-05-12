@@ -1,35 +1,44 @@
 const express = require('express');
 const router = express.Router();
 
+const userController = require('../controllers/utilisateurController');
+const Auth = require('../middlewares/Auth')
 
-//Accéder à la page de Connexion
+//Init bp
+const bodyParser = require('body-parser')
+const urlencodedParser = bodyParser.urlencoded({ extended: false})
+
+//Get the login page
 router.get('/login', (req, res) => {
-    res.render('connexion');
+    res.render('connexion', {title: 'Connexion'});
 });
 
-//Accéder à la page d'inscription
+//Get the logout page
+router.get('/logout', (req, res) => {
+    res.render('deconnexion', {title: 'Déconnexion'});
+});
+
+//Disconnect
+router.post('/logout', userController.disconnect)
+
+//Connect
+router.post('/login',urlencodedParser, userController.connect);
+
+//Get the register page
 router.get('/inscription', (req, res) => {
-    res.render('inscription');
+    res.render('inscription', {title : 'Inscription'});
 });
 
-//Créer un utilisateur
-router.post('/', (req, res) => {
-    res.render('index');
-});
+//Create an user
+router.post('/', urlencodedParser, userController.create)
 
-//Modifier un utilisateur
-router.put('/:id', (req, res) => {
-    res.render('index');
-});
+//Update an user
+router.put('/:id', userController.update)
 
-//Accéder à ma page de profil
-router.get('/monCompte', (req, res) => {
-    res.render('profile');
-});
+//Get the user's page
+router.get('/monCompte', Auth.isConnected, userController.read)
 
-//Supprimer un utilisateur
-router.delete('/:id', (req, res) => {
-    res.render('index');
-});
+//Delete an user
+router.delete('/:id', userController.delete)
 
 module.exports = router;

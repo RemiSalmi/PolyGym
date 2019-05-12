@@ -1,29 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-//Consulter la liste des exercices
-router.get ('/', (req, res) => {
-    res.render('listeExercices');
-});
+const exerciceController = require('../controllers/exerciceController');
 
-//Consulter le detail un exercice 
-router.get('/:id', (req, res) => {
-    res.render('index');
-});
+//Consult all exercices
+router.get ('/', exerciceController.readAll)
 
-//Supprimer un exercice
-router.delete('/:id', (req, res) => {
-    res.render('index');
-});
+//Consulter the detail of an exercice 
+router.get('/:id',exerciceController.read)
 
-//Modifier un exercice
-router.put('/:id', (req, res) => {
-    res.render('index');
-});
+//Delete an exercice
+router.delete('/:id', exerciceController.delete)
 
-//créer un exercice
-router.post('/', (req, res) => {
-    res.render('index');
-});
+//Update an exercice
+router.put('/:id', exerciceController.update)
+
+//Create an exercice
+router.post('/', exerciceController.create)
 
 module.exports = router;

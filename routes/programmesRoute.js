@@ -1,29 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
-//Afficher la liste de mes programmes
-router.get('/mesProgrammes', (req, res) => {
-    res.render('mesProgrammes');
-});
+const programController = require('../controllers/programmeControllers');
 
-//Afficher le détail d'un programme
-router.get('/mesProgrammes/:id', (req, res) => {
-    res.render('index');
-});
+//Consult all programs
+router.get('/mesProgrammes', programController.readAll)
 
-//Modifier un de mes programmes
-router.put('/mesProgrammes/:id', (req, res) => {
-    res.render('index');
-});
+//Consult the detail of a program
+router.get('/mesProgrammes/:id', programController.read)
 
-//Supprimer un de mes programmes
-router.delete('/mesProgrammes/:id', (req, res) => {
-    res.render('index');
-});
+//Update a program
+router.put('/mesProgrammes/:id', programController.update)
 
-//Créer un programme
-router.post('/', (req, res) => {
-    res.render('index');
-});
+//Delet a program
+router.delete('/mesProgrammes/:id', programController.delete)
+
+//Create a program
+router.post('/', programController.create)
 
 module.exports = router;
