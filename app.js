@@ -3,8 +3,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-//Init bp
-const bodyParser = require('body-parser');
+
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
 //Routes imports
 const utilisateursRoute = require('./routes/utilisateursRoute');
@@ -38,7 +39,4 @@ app.get('/', (req, res) => {
     res.redirect('/exercices');
 });
 
-//Test route
-app.get('/test/equips', exerciceController.getAllEquipement);
-app.get('/test/muscles/:id', exerciceController.getMuscleById);
 
