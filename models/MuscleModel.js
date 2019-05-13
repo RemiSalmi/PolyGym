@@ -1,8 +1,4 @@
-const { Pool } = require('pg')
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-})
+const pool = require('../Config/database')
 
 module.exports = class Muscle{
     constructor(id, lib){

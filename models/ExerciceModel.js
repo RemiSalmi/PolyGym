@@ -1,8 +1,4 @@
-const { Pool } = require('pg')
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-});
+const pool = require('../Config/database')
 
 class Exercice {
     constructor(id, difficulte, lib, img1, img2, img3) {
@@ -28,7 +24,6 @@ class Exercice {
 
     getEquips(){
         return new Promise((resolve, reject) =>{
-            console.log("THIS", this)
             pool.query('SELECT lib from "EQUIPEMENT_EXERCICE" ee JOIN "EQUIPEMENT" e on ee."idEquip" = e.id WHERE "idEx" = $1', [this.id], (err, res) => {
                 if (err) {
                     reject(err)

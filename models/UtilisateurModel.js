@@ -1,8 +1,4 @@
-const { Pool } = require('pg')
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
-});
+const pool = require('../Config/database')
 
 class Utilisateur {
     constructor(id, nom, prenom, mail, mdp, role) {
