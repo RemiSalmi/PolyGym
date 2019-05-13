@@ -14,15 +14,17 @@
             <a href="/exercices/<%= ex.id%>">
                 <div class="card h-100 text-white bg-dark mb-3">
                     <h3 class="card-header">
-                        Muscle
+
+                        <%ex.muscles.forEach(muscle =>{ %>
+                        <%= muscle.lib %>
+                        <% })%>
                     </h3>
                     <div class="card-body">
                         <h5 class="card-title"><%= ex.lib %></h5>
 
                     </div>
                     <img style="height: 200px; width: 100%; display: block;"
-                        src="../public/images/exercices/<%= ex.img1 %>"
-                        alt="image de l'exercice">
+                        src="../public/images/exercices/<%= ex.img1 %>" alt="image de l'exercice">
 
                     <div class="card-footer text-white mr-top">
                         difficulté : <%= ex.difficulte %>
