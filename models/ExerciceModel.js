@@ -2,7 +2,7 @@ const { Pool } = require('pg')
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: true,
-})
+});
 
 class Exercice {
     constructor(id, difficulte, lib, img1, img2, img3) {
