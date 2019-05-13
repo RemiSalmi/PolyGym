@@ -8,10 +8,12 @@ exports.read = (req,res) =>{
     const id = parseInt(req.params.id)
     Exercice.getExerciceById(id)
     .then(exercice =>{
-        console.log(exercice)
         exercice.getMuscles()
-        .then(tabMuscle =>{
-            res.render('exercice', {title : `Exercice: ${Exercice.lib} `, Exercice, tabMuscle})
+        .then(tabMuscles =>{
+            exercice.getEquips()
+            .then(tabEquips => {
+                res.render('exercice', {title : `Exercice: ${exercice.lib} `, exercice, tabMuscles, tabEquips})
+            })      
         })
         
     })
@@ -20,7 +22,12 @@ exports.read = (req,res) =>{
 exports.readAll = (req,res) =>{
     Exercice.getAll()
     .then(tabEx =>{
-        res.render('listeExercices', {title : 'Liste des exercice', tabEx})
+            Promise.all( tabEx.map(ex => ex.getMuscles().then(m => ex["muscles"] = m)))
+            .then(() =>{
+                res.render('listeExercices', {title : 'Liste des exercice', tabEx})   
+            })    
+        
+                
     })
 }
 
