@@ -14,9 +14,8 @@ class Exercice {
         this.img3 = img3;
     }
 
-    getMuscles() {
-        return new Promise(function (resolve, reject) {
-            console.log('THIS', this)
+    getMuscles(){
+        return new Promise((resolve, reject) =>{
             pool.query('SELECT lib from "TRAVAILLER" t JOIN "MUSCLE" m on t."idMuscle" = m.id WHERE "idEx" = $1', [this.id], (err, res) => {
                 if (err) {
                     reject(err)
@@ -25,14 +24,26 @@ class Exercice {
                 }
             })
         })
+    }
 
+    getEquips(){
+        return new Promise((resolve, reject) =>{
+            console.log("THIS", this)
+            pool.query('SELECT lib from "EQUIPEMENT_EXERCICE" ee JOIN "EQUIPEMENT" e on ee."idEquip" = e.id WHERE "idEx" = $1', [this.id], (err, res) => {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(res.rows)
+                }
+            })
+        })
     }
 }
 
 module.exports = Exercice
 
 module.exports.getAll = () => {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) =>{
         pool.query('SELECT * FROM "EXERCICE"', (err, res) => {
             if (err) {
                 reject(err)
@@ -45,13 +56,26 @@ module.exports.getAll = () => {
 }
 
 module.exports.getExerciceById = (id) => {
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) =>{
         pool.query('SELECT * FROM "EXERCICE" WHERE id = $1', [id], (err, res) => {
             if (err) {
                 reject(err)
             } else {
                 const exercice = new Exercice(res.rows[0].id,res.rows[0].difficulte,res.rows[0].lib,res.rows[0].img1,res.rows[0].img2,res.rows[0].img3,res.rows[0].role)
                 resolve(exercice)
+            }
+        })
+    })
+}
+
+
+module.exports.getEquips = (id) =>{
+    return new Promise((resolve, reject) =>{
+        pool.query('SELECT lib from "EQUIPEMENT_EXERCICE" ee JOIN "EQUIPEMENT" e on ee."idEquip" = e.id WHERE "idEx" = $1', [id], (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(res.rows)
             }
         })
     })
