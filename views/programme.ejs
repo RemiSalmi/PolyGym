@@ -1,0 +1,72 @@
+<%- include('header'); %>
+
+<div class=" container jumbotron mr-auto mr-top">
+    <h1 class="mr-auto">Exercices du programme (<%= exs.length %>) </h1>
+</div>
+
+
+<div class="container jumbotron mr-auto mr-top">
+    <% if(exs.length == 0){ %>
+        <span>Aucun exercice dans le programme</span>
+    <% } %>
+    <% exs.forEach(ex =>{ %>
+    <div class="card mb-3 text-white bg-dark addMrgLR">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <img class="imgSize" src="/public/images/exercices/<%= ex.img1 %>" alt="Photo de l'étudiant">
+            </div>
+            <div class=" col-md-9">
+                <div class="card-header">
+                    <h5 class="card-title"><%= ex.lib %></h5>
+                </div>
+                <div class=" card-body">
+                    <table class="mr-bot-20">
+                        <tr class="mr-bot">
+                            <td>Série(s)</td>
+                            <td class="cadre"><%= ex.nbSerie %></td>
+                        </tr>
+                        <tr class="spacer">
+                        </tr>
+                        <tr>
+                            <td style="width:120px">Répétition(s)</td>
+                            <td class="cadre"><%= ex.nbRep %></td>
+                        </tr>
+                    </table>
+                    <a class="btn btn-warning" href="/exercices/<%= ex.idEx %>">Consulter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
+<div class="container mr-top">
+
+    <div class="mr-auto">
+        <ul class="pagination pagination-md justify-content-center ">
+            <li class="page-item disabled">
+                <a class="page-link" href="#">&laquo;</a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">4</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">5</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<%- include('footer'); %>
