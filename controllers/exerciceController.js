@@ -1,12 +1,37 @@
 const Exercice = require('../models/ExerciceModel');
-const Equipement = require('../models/EquipementModel');
-const Muscle = require('../models/MuscleModel');
 
-exports.getEquipementById = (req,res) =>{
-    const id = parseInt(req.params.id)
-    Equipement.findEquipementById(id)
-    res.redirect('/')
+exports.create = (req,res) =>{
+
 }
+
+exports.read = (req,res) =>{
+    const id = parseInt(req.params.id)
+    Exercice.getExerciceById(id)
+    .then(exercice =>{
+        console.log(exercice)
+        exercice.getMuscles()
+        .then(tabMuscle =>{
+            res.render('exercice', {title : `Exercice: ${Exercice.lib} `, Exercice, tabMuscle})
+        })
+        
+    })
+}
+
+exports.readAll = (req,res) =>{
+    Exercice.getAll()
+    .then(tabEx =>{
+        res.render('listeExercices', {title : 'Liste des exercice', tabEx})
+    })
+}
+
+exports.update = (req,res) =>{
+
+}
+
+exports.delete = (req,res) =>{
+
+}
+
 
 exports.getAllEquipement = (req,res) =>{
     Equipement.getAll()
