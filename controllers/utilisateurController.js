@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 //Init jwt
 var jwt = require('jsonwebtoken');
-const secret = process.env.secret
+const secret = require('../Config/security')
 
 exports.create = (req, res) => {
     const email = req.body.inputEmail
