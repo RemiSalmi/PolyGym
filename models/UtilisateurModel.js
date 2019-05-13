@@ -63,3 +63,15 @@ module.exports.verifEmail = (email) => {
         })
     })
 }
+
+module.exports.checkProgram = (idUtilisateur, idProg) => {
+    return new Promise(function (resolve, reject) {
+        pool.query('SELECT * FROM "UTILISATEUR_PROGRAMME" WHERE "idUtilisateur" = $1 AND "idProg" = $2 ', [idUtilisateur, idProg], (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(res)
+            }
+        })
+    }) 
+}
