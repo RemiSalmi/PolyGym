@@ -1,6 +1,6 @@
 //Init jwt
 const jwt = require('jsonwebtoken')
-const secret = process.env.secret
+const secret = 'qgemunQgqGIqiQGiqgi26gQGI4IgaqiadjoAZidADIzdSIAD33ffé'
 
 exports.isConnected = (req, res, next) => {
     if (req.cookies){
