@@ -14,6 +14,10 @@
     margin-bottom: 2%;
 }
 
+.mr-bot-20{
+    margin-bottom: 20px;
+}
+
 .mr-top-40{
     margin-top: 40px;
 }
@@ -53,4 +57,27 @@ a:hover{
 
 .mr-r-auto{
     margin-right: auto;
+}
+
+.imgSize{
+    width: 100%;
+    height: 100%;
+}
+
+.imgContainer{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+}
+
+
+.cadre{
+    text-align: center;
+    background-color: #0006;
+    font-size: x-large;
+    width: 42px;
+}
+
+.spacer{
+    height: 10px;
 }
