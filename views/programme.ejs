@@ -1,13 +1,19 @@
 <%- include('header'); %>
 
 <div class=" container jumbotron mr-auto mr-top">
-    <h1 class="mr-auto">Exercices du programme (<%= exs.length %>) </h1>
+    <span id="idProg" class="d-none"><%= idProg %></span>
+    <h1 class="mr-auto">Exercice(s) du programme (<%= exs.length %>) </h1>
+    <a href="/programmes/mesProgrammes/creer" class="btn btn-warning mr-top-40">Ajouter un programme</a>
 </div>
 
-
 <div class="container jumbotron mr-auto mr-top">
+    <div id="error" style="display:none" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <% if(exs.length == 0){ %>
-        <span>Aucun exercice dans le programme</span>
+    <span>Aucun exercice dans le programme</span>
     <% } %>
     <% exs.forEach(ex =>{ %>
     <div class="card mb-3 text-white bg-dark addMrgLR">
@@ -17,6 +23,8 @@
             </div>
             <div class=" col-md-9">
                 <div class="card-header">
+                    <span class="d-none"><%=ex.id %></span>
+                    <button class="btn btn-danger deleteBtn"> X</button>
                     <h5 class="card-title"><%= ex.lib %></h5>
                 </div>
                 <div class=" card-body">
@@ -68,5 +76,7 @@
         </ul>
     </div>
 </div>
+
+<script src="/public/scripts/deleteExProgAjax.js"></script>
 
 <%- include('footer'); %>

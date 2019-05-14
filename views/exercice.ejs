@@ -58,35 +58,40 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+    <small class="mr-auto">Source : Azeoo.com</small>
 
-  <h2 class="mr-top-40">Ajouter à mes programmes</h2>
-  <hr>
-  <div id="error" style="display:none" class="alert alert-danger alert-dismissible fade show" role="alert">
+
+  <div id="addSection">
+    <h2 class="mr-top-40">Ajouter à mes programmes</h2>
+    <hr>
+    <div id="error" style="display:none" class="alert alert-danger alert-dismissible fade show" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
       </button>
-  </div>
-  <div id="success" style="display:none" class="alert alert-success alert-dismissible fade show" role="alert">
+    </div>
+    <div id="success" style="display:none" class="alert alert-success alert-dismissible fade show" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
       </button>
+    </div>
+
+    <form id="addProgForm">
+      <input type="text" disabled id="inputIdUser" name="inputIdUser" value="6" style="display : none">
+      <label for="inputIdProg">Choisissez le programme auquel vous voulez ajouter l'exercice</label>
+      <select class="form-control bg-white" name="inputIdProg" id="inputIdProg">
+      </select>
+      <label for="inputNbSerie">Nombre de série</label>
+      <input type="number" required class="form-control bg-white" name="inputNbSerie" id="inputNbSerie">
+      <label for="inputNbRep">Nombre de répétition</label>
+      <input type="number" required class="form-control bg-white" name="inputNbRep" id="inputNbRep">
+      <a class="btn btn-warning mr-top-40" href="/programmes/mesProgrammes/creer">Créer un nouveau programme</a>
+      <button type="submit" class="btn btn-success mr-top-40">Ajouter l'exercice</button>
+    </form>
   </div>
-
-  <form id="addProgForm">
-    <input type="text" disabled id="inputIdUser" name="inputIdUser" value="6" style="display : none">
-    <label for="inputIdProg">Choisissez le programme auquel vous voulez ajouter l'exercice</label>
-    <select class="form-control bg-white" name="inputIdProg" id="inputIdProg">
-    </select>
-    <label for="inputNbSerie">Nombre de série</label>
-    <input type="number" required class="form-control bg-white" name="inputNbSerie" id="inputNbSerie">
-    <label for="inputNbRep">Nombre de répétition</label>
-    <input type="number" required class="form-control bg-white" name="inputNbRep" id="inputNbRep">
-    <button type="submit" class="btn btn-success mr-top-40">Ajouter</button>
-  </form>
-
 </div>
+
 <script src="/public/scripts/autoFillProgList.js"></script>
 <script src="/public/scripts/addExToProgramAjax.js"></script>
-
+<script src="/public/scripts/addSectionManager.js"></script>
 
 <%- include('footer'); %>
