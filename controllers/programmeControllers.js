@@ -20,10 +20,10 @@ exports.create = (req,res) =>{
 }
 
 exports.read = (req,res) =>{
-    const id = parseInt(req.params.id)
-    Programme.getExercicesByProg(id)
+    const idProg = parseInt(req.params.idProg)
+    Programme.getExercicesByProg(idProg)
     .then(exs => {
-        res.render('programme', {title: 'Programme',exs})
+        res.render('programme', {title: 'Programme',exs, idProg})
     })
     .catch(err =>{
         console.error(err)
@@ -48,6 +48,19 @@ exports.update = (req,res) =>{
 
 exports.delete = (req,res) =>{
 
+}
+
+exports.deleteEx = (req,res) =>{
+    const idProg = req.params.idProg
+    const idEx = req.params.idEx
+    Programme.deleteExFromProg(idProg, idEx)
+    .then(() =>{
+        res.sendStatus(200)
+    })
+    .catch(err =>{
+        console.error(err)
+        res.sendStatus(401)
+    })
 }
 
 exports.getCreatePage = (req, res) =>{
