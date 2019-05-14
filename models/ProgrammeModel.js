@@ -37,3 +37,35 @@ module.exports.getExercicesByProg = (idProg) => {
         })
     })
 }
+
+module.exports.create = (lib, desc) => {
+    return new Promise((resolve, reject) =>{
+        pool.query('INSERT INTO "PROGRAMME" (lib,"desc") VALUES ($1,$2)',[lib,desc], (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve()
+            }
+        })
+    })
+} 
+
+module.exports.linktoUser = (idUser) =>{
+    return new Promise((resolve, reject) =>{
+        pool.query('select last_value FROM "PROGRAMME_id_seq"', (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                var idProg = res.rows[0].last_value
+                pool.query('INSERT INTO "UTILISATEUR_PROGRAMME" ("idUtilisateur","idProg") VALUES ($1,$2)',[idUser,idProg], (err, res) => {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve()
+                    }
+                })
+            }
+        })
+        
+    })
+}
