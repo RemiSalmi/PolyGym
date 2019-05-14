@@ -17,7 +17,7 @@ router.get('/mesProgrammes',Auth.isConnected, programController.readAll)
 router.get('/mesProgrammes/creer',Auth.isConnected,programController.getCreatePage)
 
 //Consult the detail of one of our programs
-router.get('/mesProgrammes/:id',Auth.isConnected, progCheck.isMyProg , programController.read)
+router.get('/mesProgrammes/:idProg',Auth.isConnected, progCheck.isMyProg , programController.read)
 
 //Update one of our programs
 router.put('/mesProgrammes/:id',Auth.isConnected, programController.update)
@@ -33,5 +33,8 @@ router.get('/utilisateurs/:idUser', urlencodedParser,Auth.isConnected, programCo
 
 //Add exercice to program
 router.post('/exercices', urlencodedParser,Auth.isConnected,progCheck.VerifProgOwner, programController.addExercice)
+
+//Delete one exercice of one of our programs
+router.delete('/mesProgrammes/:idProg/exercices/:idEx', Auth.isConnected, progCheck.isMyProg, programController.delete)
 
 module.exports = router;
