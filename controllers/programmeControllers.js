@@ -4,7 +4,19 @@ const Programme = require('../models/ProgrammeModel');
 var jwt = require('jsonwebtoken');
 
 exports.create = (req,res) =>{
-
+    const nomProg = req.body.InputNomProg
+    const descProg = req.body.inputDescProg
+    Programme.create(nomProg,descProg)
+    .then(() => {
+        const tokenInfo = jwt.decode(req.cookies.token)
+        Programme.linktoUser(tokenInfo.userId)
+        .then(() => {
+            res.redirect('/programmes/mesProgrammes')
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
 }
 
 exports.read = (req,res) =>{
@@ -36,5 +48,9 @@ exports.update = (req,res) =>{
 
 exports.delete = (req,res) =>{
 
+}
+
+exports.getCreatePage = (req, res) =>{
+    res.render('creerProg', {title: 'Créer un programme'})
 }
 
