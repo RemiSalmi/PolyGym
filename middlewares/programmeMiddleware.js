@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken')
 
 exports.isMyProg = (req, res, next) => {
     const idUtilisateur = jwt.decode(req.cookies.token).userId
-    Utilisateur.checkProgram(idUtilisateur, req.params.id)
+    Utilisateur.checkProgram(idUtilisateur, req.params.idProg)
     .then(resulat =>{
         if (resulat.rowCount == 0){
-            res.sendStatus(401)
+            res.status(401).send({error:'Ce programme ne vous appartient pas'})
         }else{
             next()
         }
