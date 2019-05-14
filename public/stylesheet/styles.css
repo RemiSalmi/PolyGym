@@ -81,3 +81,10 @@ a:hover{
 .spacer{
     height: 10px;
 }
+
+.deleteBtn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 56px;
+}
