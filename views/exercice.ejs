@@ -1,5 +1,8 @@
 <%- include('header'); %>
 
+<div class="container mr-top-40">
+  <button id="backBtn" class="btn btn-warning "><i class="fas fa-arrow-left"></i> Retour</button>
+</div>
 
 <div class="container jumbotron mr-auto mr-top">
   <h2><%= exercice.lib %></h2>
@@ -58,7 +61,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-    <small class="mr-auto">Source : Azeoo.com</small>
+  <small class="mr-auto">Source : Azeoo.com</small>
 
 
   <div id="addSection">
@@ -93,5 +96,6 @@
 <script src="/public/scripts/autoFillProgList.js"></script>
 <script src="/public/scripts/addExToProgramAjax.js"></script>
 <script src="/public/scripts/addSectionManager.js"></script>
+<script src="/public/scripts/backBtn.js"></script>
 
 <%- include('footer'); %>

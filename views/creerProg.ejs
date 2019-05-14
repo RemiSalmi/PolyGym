@@ -1,7 +1,10 @@
 <%- include('header'); %>
 
-<div class="container loginBox mr-auto mr-bot mr-top-40 w-80">
+<div class="container mr-top-40">
+    <button id="backBtn" class="btn btn-warning "><i class="fas fa-arrow-left"></i> Retour</button>
+</div>
 
+<div class="container loginBox mr-auto mr-bot mr-top-40 w-80">
     <div class="jumbotron ">
         <h1 class="mr-auto">Créer un programme</h1>
     </div>
@@ -12,7 +15,7 @@
             placeholder="Entrez le nom du programme">
 
         <label class="mr-top" for="inputDescProg">Description</label>
-        <textarea id="story" class="form-control" id="inputDescProg" name="inputDescProg"rows="5" cols="33"></textarea>
+        <textarea id="story" class="form-control" id="inputDescProg" name="inputDescProg" rows="5" cols="33"></textarea>
 
         <div class="dsp-flex"></div>
         <button type="submit" class="btn btn-success mr-auto mr-top-40">Créer</button>
@@ -20,5 +23,7 @@
 
 </form>
 </div>
+
+<script src="/public/scripts/backBtn.js"></script>
 
 <%- include('footer'); %>
