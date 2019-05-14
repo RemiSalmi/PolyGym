@@ -35,6 +35,6 @@ router.get('/utilisateurs/:idUser', urlencodedParser,Auth.isConnected, programCo
 router.post('/exercices', urlencodedParser,Auth.isConnected,progCheck.VerifProgOwner, programController.addExercice)
 
 //Delete one exercice of one of our programs
-router.delete('/mesProgrammes/:idProg/exercices/:idEx', Auth.isConnected, progCheck.isMyProg, programController.delete)
+router.delete('/mesProgrammes/:idProg/exercices/:idEx', Auth.isConnected, progCheck.isMyProg, programController.deleteEx)
 
 module.exports = router;
