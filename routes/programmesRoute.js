@@ -6,7 +6,7 @@ const progCheck = require('../middlewares/programmeMiddleware')
 
 //Init bp
 const bodyParser = require('body-parser')
-const urlencodedParser = bodyParser.urlencoded({ extended: false})
+const urlencodedParser = bodyParser.urlencoded({ extended: true})
 
 const programController = require('../controllers/programmeControllers');
 
@@ -27,5 +27,11 @@ router.delete('/mesProgrammes/:id',Auth.isConnected, programController.delete)
 
 //Create a personal program
 router.post('/mesProgrammes',urlencodedParser,Auth.isConnected, programController.create)
+
+//Get user's programs list
+router.get('/utilisateurs/:idUser', urlencodedParser,Auth.isConnected, programController.getMyProgs)
+
+//Add exercice to program
+router.post('/exercices', urlencodedParser,Auth.isConnected,progCheck.VerifProgOwner, programController.addExercice)
 
 module.exports = router;
