@@ -54,3 +54,30 @@ exports.getCreatePage = (req, res) =>{
     res.render('creerProg', {title: 'Créer un programme'})
 }
 
+exports.getMyProgs = (req, res) =>{
+    const idUser = parseInt(req.params.idUser)
+
+    Programme.getAllByUser(idUser)
+    .then(tabProg =>{
+        res.json(tabProg)
+    })
+    .catch(err =>{
+        console.error(err)
+    })
+}
+
+exports.addExercice = (req, res) =>{
+    const idProg = req.body.inputIdProg
+    const idEx = req.body.idEx
+    const nbSerie = req.body.inputNbSerie
+    const nbRep = req.body.inputNbRep
+
+    Programme.addExercice(idProg,idEx,nbRep,nbSerie)
+    .then(() =>{
+        res.status(200).send({success: 'Exercice ajouté avec succès'})
+    })
+    .catch(err => {
+        res.status(401).send({error: 'Une erreur s\'est produite , vérifiez de ne pas déjà avoir cet exercice dans ce programme'})
+    })
+}
+
