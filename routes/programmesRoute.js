@@ -20,10 +20,10 @@ router.get('/mesProgrammes/creer',Auth.isConnected,programController.getCreatePa
 router.get('/mesProgrammes/:idProg',Auth.isConnected, progCheck.isMyProg , programController.read)
 
 //Update one of our programs
-router.put('/mesProgrammes/:id',Auth.isConnected, programController.update)
+router.put('/mesProgrammes/:idProg',urlencodedParser,Auth.isConnected,progCheck.isMyProg ,programController.update)
 
 //Delete one of our programs
-router.delete('/mesProgrammes/:id',Auth.isConnected, programController.delete)
+router.delete('/mesProgrammes/:idProg',Auth.isConnected, programController.delete)
 
 //Create a personal program
 router.post('/mesProgrammes',urlencodedParser,Auth.isConnected, programController.create)
