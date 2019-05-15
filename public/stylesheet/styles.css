@@ -89,3 +89,7 @@ a:hover{
     height: 56px;
     z-index: 2;
 }
+
+.border-black{
+    border: 1px solid black
+}
