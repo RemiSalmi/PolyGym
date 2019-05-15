@@ -48,10 +48,6 @@ exports.update = (req,res) =>{
     const nbSerie = req.body.inputNbSerie
     const idEx = req.body.idEx
 
-    console.log(idProg)
-    console.log(nbRep)
-    console.log(nbSerie)
-    console.log(idEx)
     Programme.update(idProg,nbRep,nbSerie,idEx)
     .then(() =>{
         res.sendStatus(200)
@@ -63,7 +59,15 @@ exports.update = (req,res) =>{
 }
 
 exports.delete = (req,res) =>{
-
+    const idProg = req.params.idProg
+    Programme.delete(idProg)
+    .then(() =>{
+        res.sendStatus(200)
+    })
+    .catch(err =>{
+        console.error(err)
+        res.status(401).send({error : 'Une erreure s\'est produite lors de la supression'})
+    })
 }
 
 exports.deleteEx = (req,res) =>{

@@ -105,3 +105,15 @@ module.exports.update = (idProg,nbRep,nbSerie,idEx) =>{
         })
     })
 }
+
+module.exports.delete = (idProg) =>{
+    return new Promise((resolve, reject) => {
+        pool.query('DELETE FROM "PROGRAMME" WHERE "id"= $1 ', [idProg], (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve()
+            }
+        })
+    })
+}

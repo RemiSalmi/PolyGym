@@ -23,7 +23,7 @@ router.get('/mesProgrammes/:idProg',Auth.isConnected, progCheck.isMyProg , progr
 router.put('/mesProgrammes/:idProg',urlencodedParser,Auth.isConnected,progCheck.isMyProg ,programController.update)
 
 //Delete one of our programs
-router.delete('/mesProgrammes/:idProg',Auth.isConnected, programController.delete)
+router.delete('/mesProgrammes/:idProg',Auth.isConnected,progCheck.isMyProg, programController.delete)
 
 //Create a personal program
 router.post('/mesProgrammes',urlencodedParser,Auth.isConnected, programController.create)
