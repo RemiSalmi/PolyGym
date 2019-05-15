@@ -43,7 +43,23 @@ exports.readAll = (req,res) =>{
 }
 
 exports.update = (req,res) =>{
+    const idProg = req.params.idProg
+    const nbRep = req.body.inputNbRep
+    const nbSerie = req.body.inputNbSerie
+    const idEx = req.body.idEx
 
+    console.log(idProg)
+    console.log(nbRep)
+    console.log(nbSerie)
+    console.log(idEx)
+    Programme.update(idProg,nbRep,nbSerie,idEx)
+    .then(() =>{
+        res.sendStatus(200)
+    })
+    .catch(err =>{
+        console.error(err)
+        res.status(401).send({error : 'Une erreure s\'est produite lors de la modification'})
+    })
 }
 
 exports.delete = (req,res) =>{

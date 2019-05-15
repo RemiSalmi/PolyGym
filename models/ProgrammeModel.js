@@ -93,3 +93,15 @@ module.exports.deleteExFromProg = (idProg, idEx) =>{
         })
     })
 }
+
+module.exports.update = (idProg,nbRep,nbSerie,idEx) =>{
+    return new Promise((resolve, reject) => {
+        pool.query('UPDATE "COMPOSITION_PROGRAMME" SET "nbSerie" = $1, "nbRep" = $2 WHERE "idProg" = $3 AND "idEx" = $4 ', [nbSerie,nbRep,idProg, idEx], (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve()
+            }
+        })
+    })
+}
