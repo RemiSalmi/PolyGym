@@ -1,6 +1,7 @@
 {
     let btns = document.getElementsByClassName('updtBtn')
     let btnsSave = document.getElementsByClassName('updtSaveBtn')
+    let btnCancel = document.getElementsByClassName('cancelBtn')
 
     for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", updtMode)
@@ -10,8 +11,28 @@
         btnsSave[i].addEventListener("click", updtProg)
     }    
 
+    for (let i = 0; i < btns.length; i++) {
+        btnCancel[i].addEventListener("click", cancelUpdt)
+    }  
+
+    function cancelUpdt(event){
+        event.target.classList.add('d-none')
+        let inputs = document.getElementsByClassName('cadre')
+        event.target.parentNode.lastElementChild.classList.add('d-none')
+        event.target.parentNode.children[2].classList.remove('d-none')
+        for (let i = 0; i < inputs.length; i++) {
+            if (!inputs[i].classList.contains('d-none')){
+                inputs[i].classList.add('d-none')
+            }else{
+                inputs[i].classList.remove('d-none')
+            }
+        }
+    }
+
     function updtMode(event){
-        event.target.style.display = "none"
+        event.target.classList.add('d-none')
+        event.target.parentNode.children[3].classList.remove('d-none')
+
         let inputs = document.getElementsByClassName('cadre')
         event.target.parentNode.lastElementChild.classList.remove('d-none')
         for (let i = 0; i < inputs.length; i++) {
