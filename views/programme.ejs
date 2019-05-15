@@ -8,8 +8,16 @@
 <div class=" container jumbotron mr-auto mr-top">
     <span id="idProg" class="d-none"><%= idProg %></span>
     <h1 class="mr-auto">Exercice(s) du programme (<%= exs.length %>) </h1>
-    <a href="/programmes/mesProgrammes/creer" class="btn btn-warning mr-top-40">Ajouter un programme</a>
 </div>
+
+<div class="container mr-top-40">
+    <div id="error" style="display:none" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+
 
 <div class="container jumbotron mr-auto mr-top">
     <div id="error" style="display:none" class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -37,15 +45,19 @@
                         <tr class="mr-bot">
                             <td>Série(s)</td>
                             <td class="cadre"><%= ex.nbSerie %></td>
+                            <td class="cadre d-none"><input type="number" require min="0" id="inputNbSerie"></td>
                         </tr>
                         <tr class="spacer">
                         </tr>
                         <tr>
                             <td style="width:120px">Répétition(s)</td>
                             <td class="cadre"><%= ex.nbRep %></td>
+                            <td class="cadre d-none"><input type="number" require min="0" id="inputNbRep"></td>
                         </tr>
                     </table>
                     <a class="btn btn-warning" href="/exercices/<%= ex.idEx %>">Consulter</a>
+                    <button class="btn btn-success updtBtn">Modifier</button>
+                    <button class="btn btn-success updtSaveBtn d-none">Enregistrer</button>
                 </div>
             </div>
         </div>
@@ -53,36 +65,8 @@
     <% }) %>
 </div>
 
-<div class="container mr-top">
-
-    <div class="mr-auto">
-        <ul class="pagination pagination-md justify-content-center ">
-            <li class="page-item disabled">
-                <a class="page-link" href="#">&laquo;</a>
-            </li>
-            <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">4</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">5</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">&raquo;</a>
-            </li>
-        </ul>
-    </div>
-</div>
-
 <script src="/public/scripts/deleteExProgAjax.js"></script>
 <script src="/public/scripts/backBtn.js"></script>
+<script src="/public/scripts/updateProgAjax.js"></script>
 
 <%- include('footer'); %>

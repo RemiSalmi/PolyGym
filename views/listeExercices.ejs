@@ -4,10 +4,7 @@
     <h1 class="mr-auto">Exercices</h1>
 </div>
 
-<div class="container jumbotron mr-auto mr-top">
-
-
-
+<div class="container jumbotron mr-auto mr-top mr-bot">
     <div class="row">
         <% tabEx.forEach(ex =>{ %>
         <div class="col-lg-4 mr-bot">
@@ -35,35 +32,6 @@
 
         <% }) %>
     </div>
-</div>
-<div class="container mr-top">
-
-    <div class="mr-auto">
-        <ul class="pagination pagination-md justify-content-center ">
-            <li class="page-item disabled">
-                <a class="page-link" href="#">&laquo;</a>
-            </li>
-            <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">4</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">5</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="#">&raquo;</a>
-            </li>
-        </ul>
-    </div>
-
 </div>
 
 <%- include('footer'); %>
