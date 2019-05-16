@@ -22,10 +22,10 @@ exports.isConnected = (req, res, next) => {
 exports.itsMe = (req, res, next) => {
     idSend = parseInt(req.params.idUser)
     userInfo = jwt.decode(req.cookies.token)
-    idCurrentUser = parseInt(userInfo.userId)    
-    if (idSend == idCurrentUser) {
+    idCurrentUser = parseInt(userInfo.userId)
+    if (idSend == idCurrentUser) {    
         next()
-    } else {
-        res.sendStatus(401)
+    } else {    
+        res.sendStatus(401).send({error : 'Ce n\'est pas votre compte'})
     }
 }
