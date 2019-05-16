@@ -93,3 +93,11 @@ a:hover{
 .border-black{
     border: 1px solid black
 }
+
+.mr-l-20{
+    margin-left: 20px;
+}
+
+.mr-t-10{
+    margin-top: 10px;
+}
