@@ -18,15 +18,15 @@ exports.create = (req, res) => {
         Utilisateur.verifEmail(email)
             .then(resultat => {
                 if (resultat.rowCount == 0) {
-                    const encryptedPass = bcrypt.hashSync(mdp,10)
-                    const utilisateur = new Utilisateur(1,nom,prenom,email,encryptedPass,'Client')
+                    const encryptedPass = bcrypt.hashSync(mdp, 10)
+                    const utilisateur = new Utilisateur(1, nom, prenom, email, encryptedPass, 'Client')
                     Utilisateur.create(utilisateur)
-                    .then(() => {
-                        res.redirect('/utilisateurs/login')
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
+                        .then(() => {
+                            res.redirect('/utilisateurs/login')
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })
                 } else {
                     res.render('inscription', { title: 'Inscription', error: 'Adresse email déjà utilisée' })
                 }
@@ -51,20 +51,30 @@ exports.read = (req, res) => {
 }
 
 exports.update = (req, res) => {
-
+    const idUser = parseInt(req.params.idUser)
+    let mdp = req.body.mdp
+    mdp = bcrypt.hashSync(mdp, 10)
+    Utilisateur.update(mdp, idUser)
+        .then(() => {
+            res.status(200).send({ success: "Mot de passe modifié avec succès" })
+        })
+        .catch(err => {
+            console.error(err)
+            res.status(401).send({ error: "erreur lors du changement de mot de passe" })
+        })
 }
 
 exports.delete = (req, res) => {
     const idUser = parseInt(req.params.idUser)
     Utilisateur.delete(idUser)
-    .then(() =>{
-        res.clearCookie('token')
-        res.sendStatus(200)
-    })
-    .catch(err =>{
-        console.log(err)
-        res.status(401).send({error : 'Erreur lors de la supression de l\'utilisateur'})
-    })
+        .then(() => {
+            res.clearCookie('token')
+            res.sendStatus(200)
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(401).send({ error: 'Erreur lors de la supression de l\'utilisateur' })
+        })
 }
 
 exports.connect = (req, res) => {

@@ -1,4 +1,6 @@
 {
+    const userId = document.getElementById('userId').innerHTML
+
     const btnUpdtMode = document.getElementById('btnUpdtMode')
     const btnCancel = document.getElementById('btnCancelUpdt')
     const btnUpdt = document.getElementById('btnUpdt')
@@ -28,13 +30,24 @@
     function update(event) {
         const mdp = document.getElementById('inputMdp').value
         const mdp2 = document.getElementById('inputMdp2').value
-        console.log(mdp)
-        console.log(mdp2)
 
         if (mdp == mdp2) {
-            console.log("ok")
+            let Request = new XMLHttpRequest()
+            const address = '/utilisateurs/' + userId
+            Request.open("PUT", address, true)
+            Request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            Request.onreadystatechange = function () {
+                if (Request.readyState == XMLHttpRequest.DONE && Request.status == 200) {
+                    document.getElementById('success').innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">' + JSON.parse(Request.response).success + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+                }
+                if (Request.readyState == XMLHttpRequest.DONE && Request.status == 401) {
+                    document.getElementById('error').innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">' + JSON.parse(Request.response).error + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+                }
+            }
+            payLoad = "mdp=" + mdp
+            Request.send(payLoad)
+
         } else {
-            console.log('nop')
             document.getElementById('error').innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">Les mots de passe ne correspondent pas<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
         }
     }

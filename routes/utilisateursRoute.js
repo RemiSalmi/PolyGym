@@ -33,7 +33,7 @@ router.get('/inscription', (req, res) => {
 router.post('/', urlencodedParser, userController.create)
 
 //Update an user
-router.put('/:id', userController.update)
+router.put('/:idUser',urlencodedParser,Auth.isConnected,Auth.itsMe, userController.update)
 
 //Get the user's page
 router.get('/monCompte', Auth.isConnected, userController.read)

@@ -87,3 +87,18 @@ module.exports.delete = (userId) =>{
         })
     })
 }
+
+module.exports.update = (mdp, userId) => {
+
+    
+
+    return new Promise(function (resolve, reject) {
+        pool.query('UPDATE "UTILISATEUR" SET mdp = $1 WHERE id = $2', [mdp,userId], (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(res)
+            }
+        })
+    })
+}
