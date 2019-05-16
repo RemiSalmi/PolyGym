@@ -39,6 +39,6 @@ router.put('/:id', userController.update)
 router.get('/monCompte', Auth.isConnected, userController.read)
 
 //Delete an user
-router.delete('/:id', userController.delete)
+router.delete('/:idUser',Auth.isConnected,Auth.itsMe, userController.delete)
 
 module.exports = router;

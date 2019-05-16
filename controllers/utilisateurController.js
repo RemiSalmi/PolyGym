@@ -55,7 +55,16 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-
+    const idUser = parseInt(req.params.idUser)
+    Utilisateur.delete(idUser)
+    .then(() =>{
+        res.clearCookie('token')
+        res.sendStatus(200)
+    })
+    .catch(err =>{
+        console.log(err)
+        res.status(401).send({error : 'Erreur lors de la supression de l\'utilisateur'})
+    })
 }
 
 exports.connect = (req, res) => {

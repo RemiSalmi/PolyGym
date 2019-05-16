@@ -75,3 +75,15 @@ module.exports.checkProgram = (idUtilisateur, idProg) => {
         })
     }) 
 }
+
+module.exports.delete = (userId) =>{
+    return new Promise(function (resolve, reject) {
+        pool.query('DELETE FROM "UTILISATEUR" WHERE "id" = $1', [userId], (err, res) => {
+            if (err) {
+                reject(err)
+            } else {
+                resolve(res)
+            }
+        })
+    })
+}
