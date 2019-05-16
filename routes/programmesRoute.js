@@ -29,7 +29,7 @@ router.delete('/mesProgrammes/:idProg',Auth.isConnected,progCheck.isMyProg, prog
 router.post('/mesProgrammes',urlencodedParser,Auth.isConnected, programController.create)
 
 //Get user's programs list
-router.get('/utilisateurs/:idUser', urlencodedParser,Auth.isConnected, programController.getMyProgs)
+router.get('/utilisateurs/:idUser', urlencodedParser,Auth.isConnected,Auth.itsMe, programController.getMyProgs)
 
 //Add exercice to program
 router.post('/exercices', urlencodedParser,Auth.isConnected,progCheck.VerifProgOwner, programController.addExercice)

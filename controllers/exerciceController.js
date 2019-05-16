@@ -1,5 +1,9 @@
 const Exercice = require('../models/ExerciceModel');
 
+//Init jwt
+var jwt = require('jsonwebtoken');
+const secret = require('../Config/security')
+
 exports.create = (req,res) =>{
 
 }
@@ -12,7 +16,14 @@ exports.read = (req,res) =>{
         .then(tabMuscles =>{
             exercice.getEquips()
             .then(tabEquips => {
-                res.render('exercice', {title : `Exercice: ${exercice.lib} `, exercice, tabMuscles, tabEquips})
+                let idUser
+                if(req.cookies.token){
+                    userInfo = jwt.decode(req.cookies.token)
+                    idUser = userInfo.userId
+                }else{
+                    idUser = -1
+                }
+                res.render('exercice', {title : `Exercice: ${exercice.lib} `, exercice, tabMuscles, tabEquips, idUser})
             })      
         })
         
@@ -24,7 +35,7 @@ exports.readAll = (req,res) =>{
     .then(tabEx =>{
             Promise.all( tabEx.map(ex => ex.getMuscles().then(m => ex["muscles"] = m)))
             .then(() =>{
-                res.render('listeExercices', {title : 'Liste des exercice', tabEx})   
+                res.render('listeExercices', {title : 'Liste des exercice', tabEx,})   
             })    
         
                 
