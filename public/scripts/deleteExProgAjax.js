@@ -17,8 +17,7 @@
                 window.location.href = '/programmes/mesProgrammes/' + idProg
             }
             if (Request.readyState == XMLHttpRequest.DONE && Request.status == 401) {
-                document.getElementById('error').innerHTML = JSON.parse(Request.response).error + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
-                document.getElementById('error').style.display = "block"
+                document.getElementById('error').innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">'+JSON.parse(Request.response).error +'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
             }
         }
         Request.send()

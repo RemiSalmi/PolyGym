@@ -7,17 +7,13 @@
 
 <div class="container jumbotron mr-auto mr-bot mr-top">
 
-    <div id="error" style="display:none" class="alert alert-danger alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+  <div id="error"></div>
 
   <img width="190" height="200"
     src="https://www.jaykhodiyar.com/wp-content/plugins/all-in-one-seo-pack-pro/images/default-user-image.png"
     alt="user's picture">
 
-  <table class="mr-top-40">
+  <table id="displayView" class="mr-top-40">
     <tr>
       <td class="d-none"><span id="userId"><%= utilisateur.id %></span></td>
       <td class="bold">Prénom:</td>
@@ -32,34 +28,51 @@
       <td><%= utilisateur.mail %></td>
     </tr>
   </table>
+
+  <form id="updtView" class="d-none">
+    
+    <label class="mr-top" for="inputMdp">Nouveau mot de passe</label>
+    <input type="password" required class="form-control bg-white" id="inputMdp" name="inputMdp"
+      placeholder="Entrez votre mot de passe">
+
+    <label class="mr-top" for="inputMdp2">Retapez le mot de passe</label>
+    <input type="password" required class="form-control bg-white" id="inputMdp2" name="inputMdp2"
+      placeholder="Retapez votre mot de passe">
+  </form>
+
+
   <div class="mr-top-40">
-    <button class="btn btn-warning updtBtn">Modifier</button>
-    <button class="btn btn-danger"  data-toggle="modal" data-target="#dltUserModal">Supprimer</button>
+    <button id="btnUpdtMode" class="btn btn-warning">Modifier mon mot de passe</button>
+    <button id="btnUpdt" class="btn btn-success d-none">Valider le changement</button>
+    <button id="btnCancelUpdt" class="btn btn-danger d-none">Annuler</button>
+    <button id="btnDltMode" class="btn btn-danger" data-toggle="modal" data-target="#dltUserModal">Supprimer</button>
   </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="dltUserModal" tabindex="-1" role="dialog" aria-labelledby="dltUserModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Attention</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Voulez-vous vraiment supprimer votre compte ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-danger dltBtn">Supprimer</button>
+  <!-- Modal -->
+  <div class="modal fade" id="dltUserModal" tabindex="-1" role="dialog" aria-labelledby="dltUserModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Attention</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Voulez-vous vraiment supprimer votre compte ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-danger dltBtn">Supprimer</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 
 <script src="/public/scripts/deleteUserAjax.js"></script>
+<script src="/public/scripts/updateUserAjax.js"></script>
 
 <%- include('footer'); %>
