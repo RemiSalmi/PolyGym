@@ -12,13 +12,81 @@
                 <button id="searchBtn" class="btn btn-outline-warning my-2 my-sm-0">Rechercher</button>
             </div>
         </div>
+        <div class="row bg-white mr-top-40">
+            <div class="col-lg-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Pectoraux" checked="">
+                    <label class="custom-control-label" for="Pectoraux">Pectoraux</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Abdominaux" checked="">
+                    <label class="custom-control-label" for="Abdominaux">Abdominaux</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Epaules" checked="">
+                    <label class="custom-control-label" for="Epaules">Epaules</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Biceps" checked="">
+                    <label class="custom-control-label" for="Biceps">Biceps</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Triceps" checked="">
+                    <label class="custom-control-label" for="Triceps">Triceps</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Avant-bras" checked="">
+                    <label class="custom-control-label" for="Avant-bras">Avant-bras</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Trapèzes" checked="">
+                    <label class="custom-control-label" for="Trapèzes">Trapèzes</label>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Dorsaux" checked="">
+                    <label class="custom-control-label" for="Dorsaux">Dorsaux</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Lombaires" checked="">
+                    <label class="custom-control-label" for="Lombaires">Lombaires</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Fessiers" checked="">
+                    <label class="custom-control-label" for="Fessiers">Fessiers</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Adducteurs" checked="">
+                    <label class="custom-control-label" for="Adducteurs">Adducteurs</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Quadriceps" checked="">
+                    <label class="custom-control-label" for="Quadriceps">Quadriceps</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Ischio-jambiers" checked="">
+                    <label class="custom-control-label" for="Ischio-jambiers">Ischio-jambiers</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input filter" id="Mollets" checked="">
+                    <label class="custom-control-label" for="Mollets">Mollets</label>
+                </div>
+            </div>
+            <div>
+                <button id="filter" class="btn btn-warning mr-t-10">Filtrer</button>
+                <button id="resetFilter" class="btn btn-warning mr-t-10">Enlever les filtres</button>
+            </div>
+
+        </div>
     </div>
+</div>
 </div>
 
 <div class="container jumbotron mr-auto mr-top mr-bot">
     <div class="row">
         <% tabEx.forEach(ex =>{ %>
-        <div class="col-lg-4 mr-bot">
+        <div class="col-lg-4 mr-bot exs">
             <a href="/exercices/<%= ex.id%>">
                 <div class="card h-100 text-white bg-dark mb-3">
                     <h3 class="card-header">
@@ -44,5 +112,6 @@
         <% }) %>
     </div>
 </div>
-<script src= "/public/scripts/search.js"></script>
+<script src="/public/scripts/search.js"></script>
+<script src="/public/scripts/filter.js"></script>
 <%- include('footer'); %>

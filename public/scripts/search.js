@@ -30,17 +30,14 @@
     
     function searchEx(event) {
         let searchBar = document.getElementById('searchBar').value
-        let exs = document.getElementsByClassName('col-lg-4')
+        let exs = document.getElementsByClassName('exs')
         for (let i = 0; i < exs.length; i++) {
             let exTitle = exs[i].children[0].children[0].children[1].children[0].innerHTML
-            let exMuscle = exs[i].children[0].children[0].children[0].innerHTML
             
-
             exTitle = slugify(exTitle)
-            exMuscle = slugify(exMuscle)
             searchBar = slugify(searchBar)
 
-            if (exTitle.includes(searchBar) || exMuscle.includes(searchBar)) {
+            if (exTitle.includes(searchBar)) {
                 exs[i].classList.remove('d-none')
             } else {
                 exs[i].classList.add('d-none')
