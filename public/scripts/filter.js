@@ -1,7 +1,7 @@
 {
     let filters = document.getElementsByClassName('filter')
     for (let i = 0; i < filters.length; i++) {
-        filters[i].checked = true
+        filters[i].checked = false
     }
 
 
@@ -28,8 +28,8 @@
 
         // Remove invalid chars
         str = str.replace(/[^a-z0-9 -]/g, '')
-            // Collapse whitespace and replace by -
-            .replace(/\s+/g, '-')
+            // Collapse whitespace and replace by _
+            .replace(/\s+/g, '_')
             // Collapse dashes
             .replace(/-+/g, '-');
 
@@ -42,15 +42,17 @@
             filters[i].checked = true
         }
         filter()
+        for (let i = 0; i < filters.length; i++) {
+            filters[i].checked = false
+        }
     }
 
     function filter(event) {
         let exs = document.getElementsByClassName('exs')
         let muscles = []
         let filtersEnable = []
-
         for (let j = 0; j < exs.length; j++) {
-            muscles.push(slugify(exs[j].children[0].children[0].children[0].innerHTML).split('-'))
+            muscles.push(slugify(exs[j].children[0].children[0].children[0].innerHTML).split('_'))
         }
 
         console.log(muscles)
