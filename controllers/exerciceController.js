@@ -35,7 +35,7 @@ exports.readAll = (req,res) =>{
     .then(tabEx =>{
             Promise.all( tabEx.map(ex => ex.getMuscles().then(m => ex["muscles"] = m)))
             .then(() =>{
-                res.render('listeExercices', {title : 'Liste des exercice', tabEx,})   
+                res.render('listeExercices', {title : 'Liste des exercices', tabEx,})   
             })    
         
                 
