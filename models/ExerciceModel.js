@@ -56,8 +56,13 @@ module.exports.getExerciceById = (id) => {
             if (err) {
                 reject(err)
             } else {
-                const exercice = new Exercice(res.rows[0].id,res.rows[0].difficulte,res.rows[0].lib,res.rows[0].img1,res.rows[0].img2,res.rows[0].img3,res.rows[0].role)
-                resolve(exercice)
+                if(res.rowCount > 0){
+                    const exercice = new Exercice(res.rows[0].id,res.rows[0].difficulte,res.rows[0].lib,res.rows[0].img1,res.rows[0].img2,res.rows[0].img3,res.rows[0].role)
+                    resolve(exercice)
+                }else{
+                    reject('Aucun exercice')
+                }
+                
             }
         })
     })

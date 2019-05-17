@@ -4,12 +4,9 @@ const Exercice = require('../models/ExerciceModel');
 var jwt = require('jsonwebtoken');
 const secret = require('../Config/security')
 
-exports.create = (req,res) =>{
-
-}
-
 exports.read = (req,res) =>{
     const id = parseInt(req.params.id)
+    console.log('TEST',id)
     Exercice.getExerciceById(id)
     .then(exercice =>{
         exercice.getMuscles()
@@ -28,6 +25,10 @@ exports.read = (req,res) =>{
         })
         
     })
+    .catch(err => {
+        console.error(err)
+        res.sendStatus(404)
+    })
 }
 
 exports.readAll = (req,res) =>{
@@ -40,33 +41,6 @@ exports.readAll = (req,res) =>{
         
                 
     })
-}
-
-exports.update = (req,res) =>{
-
-}
-
-exports.delete = (req,res) =>{
-
-}
-
-
-exports.getAllEquipement = (req,res) =>{
-    Equipement.getAll()
-    .then((tabEquip) => {
-        console.table(tabEquip)
-        res.send(JSON.stringify(tabEquip))
-    })
-    .catch((error) =>{
-        console.log(error)
-        res.redirect('/')
-    }) 
-}
-
-exports.getMuscleById = (req,res) =>{
-    const id = parseInt(req.params.id)
-    Muscle.findMuscleById(id)
-    res.redirect('/')
 }
 
 
