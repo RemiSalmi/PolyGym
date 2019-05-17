@@ -54,7 +54,7 @@ exports.update = (req,res) =>{
     })
     .catch(err =>{
         console.error(err)
-        res.status(401).send({error : 'Une erreure s\'est produite lors de la modification'})
+        res.status(401).send({error : 'Tous les champs doivent être remplis'})
     })
 }
 
