@@ -101,3 +101,27 @@ a:hover{
 .mr-t-10{
     margin-top: 10px;
 }
+
+footer{
+    height: 80px;
+    position: relative;
+    bottom: 0;
+    background-color: #1a1a1a;
+}
+
+.noMargin{
+    margin: 0;
+}
+
+.centerText{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.mr-top-60{
+    margin-top: 60px;
+}
+
+.mr-top-169{
+    margin-top: 169px;
+}
