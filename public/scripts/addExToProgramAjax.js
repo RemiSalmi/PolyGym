@@ -16,8 +16,8 @@
             }
         }
         const idProg = document.getElementById('inputIdProg').value
-        const nbRep = document.getElementById('inputNbRep').value
-        const nbSerie = document.getElementById('inputNbSerie').value
+        const nbRep = Math.abs(document.getElementById('inputNbRep').value)
+        const nbSerie = Math.abs(document.getElementById('inputNbSerie').value)
         const idEx = document.getElementById('idEx').innerHTML
 
         console.log(idProg, nbRep, nbSerie, idEx)

@@ -35,8 +35,8 @@
 
     function updtProg(event){
         const idProg = document.getElementById('idProg').innerHTML
-        const nbSerie = event.target.parentNode.children[0].children[0].children[0].children[2].children[0].value
-        const nbRep = event.target.parentNode.children[0].children[0].children[2].children[2].children[0].value
+        const nbSerie = Math.abs(event.target.parentNode.children[0].children[0].children[0].children[2].children[0].value)
+        const nbRep = Math.abs(event.target.parentNode.children[0].children[0].children[2].children[2].children[0].value)
         const idEx = event.target.parentNode.parentNode.children[0].children[0].innerHTML
 
         let Request = new XMLHttpRequest()
