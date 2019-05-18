@@ -32,15 +32,16 @@
         let searchBar = document.getElementById('searchBar').value
         let exs = document.getElementsByClassName('exs')
         for (let i = 0; i < exs.length; i++) {
-            let exTitle = exs[i].children[0].children[0].children[1].children[0].innerHTML
+            let exTitle = exs[i].children[0].children[1].children[1].children[0].innerHTML
+            console.log(exTitle)
             
             exTitle = slugify(exTitle)
             searchBar = slugify(searchBar)
 
             if (exTitle.includes(searchBar)) {
-                exs[i].classList.remove('d-none')
+                exs[i].classList.remove('searchActive')
             } else {
-                exs[i].classList.add('d-none')
+                exs[i].classList.add('searchActive')
             }
         }
     }

@@ -1,16 +1,4 @@
 {
-    let filters = document.getElementsByClassName('filter')
-    for (let i = 0; i < filters.length; i++) {
-        filters[i].checked = false
-    }
-
-
-    filterBtn = document.getElementById('filter')
-    resetFilterBtn = document.getElementById('resetFilter')
-
-    filterBtn.addEventListener("click", filter)
-    resetFilterBtn.addEventListener("click", resetFilter)
-
 
     //Allow us to get an str without accent and put it also to lower case 
     function slugify(str) {
@@ -36,6 +24,17 @@
         return str;
     }
 
+
+    let filters = document.getElementsByClassName('filter')
+    for (let c = 0; c < filters.length; c++) {
+        filters[c].checked = false
+    }
+
+    for (let a = 0; a < filters.length; a++) {
+        filters[a].addEventListener('click', filter)
+    }
+
+
     function resetFilter(event) {
         let filters = document.getElementsByClassName('filter')
         for (let i = 0; i < filters.length; i++) {
@@ -48,11 +47,12 @@
     }
 
     function filter(event) {
+
         let exs = document.getElementsByClassName('exs')
         let muscles = []
         let filtersEnable = []
         for (let j = 0; j < exs.length; j++) {
-            muscles.push(slugify(exs[j].children[0].children[0].children[0].innerHTML).split('_'))
+            muscles.push(slugify(exs[j].children[0].children[1].children[0].children[0].innerHTML).split('_'))
         }
 
         console.log(muscles)
@@ -73,14 +73,16 @@
                 }
             }
             if (found == false) {
-                exs[k].classList.add('d-none')
+                exs[k].classList.add('filterActive')
             } else {
-                exs[k].classList.remove('d-none')
+                exs[k].classList.remove('filterActive')
             }
         }
 
-
-
-
+        if(filtersEnable.length == 0){
+            for(let m = 0; m < exs.length; m ++){
+                exs[m].classList.remove('filterActive')
+            }
+        }
     }
 }

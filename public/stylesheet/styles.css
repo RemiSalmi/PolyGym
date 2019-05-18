@@ -125,3 +125,16 @@ footer{
 .mr-top-169{
     margin-top: 169px;
 }
+
+.searchActive{
+    display: none ;
+}
+
+.filterActive{
+    display: none ;
+}
+
+.noMargin-b{
+    margin-bottom: 0;
+}
+
